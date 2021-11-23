@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateIndexHtml = exports.getAbsoluteFSPath = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const { getAbsoluteFSPath } = require("swagger-ui-dist");
+const { getAbsoluteFSPath } = require("./swagger-ui-dist");
 exports.getAbsoluteFSPath = getAbsoluteFSPath;
 const htmlHead = `
 <!-- HTML for static distribution bundle build -->

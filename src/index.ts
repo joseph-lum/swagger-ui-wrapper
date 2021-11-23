@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const { getAbsoluteFSPath } = require("swagger-ui-dist");
+const { getAbsoluteFSPath } = require("./swagger-ui-dist");
 
 type Spec = {
     name: string;

@@ -1,6 +1,6 @@
 {
   "name": "@boxed/swagger-ui-wrapper",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "",
   "main": "dist/index.js",
   "dependencies": {

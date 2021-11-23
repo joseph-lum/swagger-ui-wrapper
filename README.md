@@ -4,14 +4,16 @@ This is a wrapper for the swagger-ui-dist package to faciliate use by passing in
 
 ## Usage
 
-```
+```ts
 import { getAbsoluteFSPath, generateIndexHtml } from '@boxed/swagger-ui-wrapper';
 
-const swaggerUIPath = getAbsoluteFSPath(); // path to the actual swagger-ui-dist directory
+// path to the actual swagger-ui-dist directory
+const swaggerUIPath = getAbsoluteFSPath(); 
 
-generateIndexHtml([{ name: 'admin', url: '/docs/spec' }], swaggerUIPath); // Generates the index html file for the swagger docs user interface - be sure to be serving out the OpenAPI spec(s) (JSON) via the url(s) specified
+// Generates the index html file for the swagger docs user interface - be sure to be serving out the OpenAPI spec(s) (JSON) via the url(s) specified
+generateIndexHtml([{ name: 'admin', url: '/docs/spec' }], swaggerUIPath); 
 
-// For Express
+// FOR EXPRESS:
 
 app.use('/docs', express.static(swaggerUIPath));
 
@@ -19,7 +21,7 @@ app.use('/docs', express.static(swaggerUIPath));
 app.get('/docs/spec', (req, res) => res.send(docs.build()));
 
 
-// For Fastify
+// FOR FASTIFY:
 
 server.register(fastifyStatic, {
     root: swaggerUIPath,
