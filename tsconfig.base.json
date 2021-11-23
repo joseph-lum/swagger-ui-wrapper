@@ -8,6 +8,7 @@
           "dom",
           "esnext"
         ],
+        "declaration": true,
         "sourceMap": true,
         "allowJs": false,
         "moduleResolution": "node",

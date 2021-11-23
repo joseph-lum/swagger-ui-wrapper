@@ -1,18 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateIndexHtml = exports.getAbsoluteFSPath = void 0;
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const { getAbsoluteFSPath } = require("swagger-ui-dist");
-
-type Spec = {
-    name: string;
-    url: string;
-}
-
-export {
-  getAbsoluteFSPath,
-  Spec,
-} 
-
+exports.getAbsoluteFSPath = getAbsoluteFSPath;
 const htmlHead = `
 <!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
@@ -56,7 +51,6 @@ const htmlHead = `
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
 `;
-
 const htmlTail = `
         dom_id: '#swagger-ui',
         deepLinking: true,
@@ -79,20 +73,21 @@ const htmlTail = `
   </body>
 </html>
 `;
-
-export const generateIndexHtml = (spec: Spec | Spec[], filePath: string) => {
+const generateIndexHtml = (spec, filePath) => {
     let htmlBody = '        urls: [\n';
     let primaryName;
     if (Array.isArray(spec)) {
         primaryName = spec[0].name;
         spec.forEach(e => htmlBody += `            { name: '${e.name}', url: \`\${location.origin}${e.url}\` },\n`);
-    } else {
+    }
+    else {
         primaryName = spec.name;
         htmlBody += `            { name: '${spec.name}', url: \`\${location.origin}${spec.url}\` },\n`;
     }
     htmlBody += '        ],\n';
     htmlBody += `        'urls.primaryName': '${primaryName}',`;
-
-    fs.writeFileSync(path.join(filePath, 'index.html'), htmlHead + htmlBody + htmlTail);
+    fs_1.default.writeFileSync(path_1.default.join(filePath, 'index.html'), htmlHead + htmlBody + htmlTail);
     return htmlHead + htmlBody + htmlTail;
 };
+exports.generateIndexHtml = generateIndexHtml;
+//# sourceMappingURL=index.js.map
